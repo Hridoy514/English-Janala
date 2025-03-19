@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Janala</title>
+    <!-- Daisy ui cdn link -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- font poppins added -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <!-- font awesome cdn -->
+    <script src="https://kit.fontawesome.com/c72f45fef3.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Custom css -->
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .font-poppins {
+            font-family: "Poppins", sans-serif;
+        }
+    </style>
+</head>
+
+<body class="font-poppins">
+    <header id="header-section" class="w-full fixed top-0 z-50 shadow-md border-b-2 border-orange-200 bg-[#ECECEC]">
+        <!-- navbar section design -->
+        <nav class="navbar max-w-7xl mx-auto ">
+            <div class="flex-1">
+                <a class="text-xl font-semibold">English<img class="inline" src="./assets/logo.png" alt=""> জানালা</a>
+            </div>
+            <div class="flex-none">
+                <ul class="flex flex-col lg:flex-row items-center  lg:gap-5 gap-2">
+                    <li><a href="#faq-section" class="btn btn-sm btn-outline btn-primary"><i
+                                class="fa-solid fa-circle-question"></i>FAQ</a></li>
+                    <li><a href="#learn-vucabularies" class="btn btn-sm btn-outline btn-primary"> <i
+                                class="fa-solid fa-book-open"></i>Learn</a></li>
+                    <li><a id="logout-btn" class="btn btn-sm btn-outline btn-primary"><i
+                                class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- Banner section here -->
+    <section id="hero-section" class="my-10 lg:pt-0 pt-32  mx-5 lg:mx-0">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 grid-cols-1">
+            <div class="flex items-center">
+                <div class="space-y-5">
+                    <h1 class="lg:text-5xl text-3xl font-bold"><span class="text-[#00BCFF]">English</span> <span
+                            class="text-[#18181B]">is Easy!!</span></h1>
+                    <p class="text-sm">আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন অথবা আপনার
+                        <br>দক্ষতা
+                        বাড়াতে চান, আমাদের Interactive Lessons <br>
+                        আপনাকে নিয়ে যাবে অন্য একটি Level এ
+                    </p>
+                    <form class="space-y-5">
+                        <input id="input-name" type="text" placeholder="Enter Your Name"
+                            class="w-80 py-2 px-2 border-gray-600 outline-none rounded-sm text-sm"><br>
+                        <input id="input-password" type="password" placeholder="Enter Your Password"
+                            class="w-80 py-2 px-2 border-gray-600 outline-none rounded-sm text-sm"><br>
+                        <a id="login-btn" class="btn btn-sm btn-primary" href="#">Get Started</a>
+                    </form>
+                </div>
+            </div>
+            <div>
+                <img class="w-[500px] mx-auto" src="./assets/hero-student.png" alt="">
+            </div>
+
+        </div>
+    </section>
+    <main id="main-section">
+        <!-- Learn vucabularies section-->
+        <section id="learn-vucabularies" class="max-w-7xl mx-auto pt-32 mb-44 mt-24">
+            <div class="text-center">
+                <h1 class="lg:text-3xl text-xl font-bold"><span class="text-[#00BCFF]">Let's</span> <span
+                        class="text-[#18181B]">Learn Vocabularies</span></h1>
+            </div>
+            <!-- dynamic button -->
+            <div id="dynamic-btn" class="my-10 lg:flex justify-center items-center lg:gap-5 space-y-5 lg:space-y-0 text-center">
+
+            </div>
+            <!-- All lessons here -->
+
+            <!-- spinner here -->
+            <div id="loadingSpinner" class="text-center">
+                <span class="loading loading-dots loading-xs"></span>
+                <span class="loading loading-dots loading-sm"></span>
+                <span class="loading loading-dots loading-md"></span>
+                <span class="loading loading-dots loading-lg"></span>
+                <span class="loading loading-dots loading-xl"></span>
+            </div>
+            <!-- modal here -->
+            <dialog id="my_modal_1" class="modal rounded-xl">
+                <div class="modal-box">
+                    <div id="modalContent" class="border-2 border-gray-100 p-5 rounded-md">
+
+                    </div>
+                    <div class="modal-action flex justify-start">
+                        <form method="dialog">
+                            <button class="btn btn-primary justify-start">Complete Learning</button>
+                        </form>
+                    </div>
+                </div>
+            </dialog>
+            <section id="modalSection">
+
+            </section>
+            <div id="lessons-container" class="flex gap-5 flex-wrap items-center justify-center py-5"></div>
+        </section>
+        <!-- lesson selected section -->
+        <div id="not-selected-lesson" class="h-56 z-50 bg-[#ECECEC] rounded-lg flex justify-center items-center text-center">
+            <div class="space-y-3">
+                <p class="text-xs text-gray-500">আপনি এখনো কোন Lesson Select করেন নি</p>
+                <p class="text-2xl font-semibold text-gray-700">একটি Lesson Select করুন।</p>
+            </div>
+        </div>
+
+        <!-- FAQ section here -->
+        <section id="faq-section" class="max-w-7xl llg:mx-auto pt-32 lg:mb-50 mx-5">
+            <div class="text-center mb-10">
+                <h1 class="text-3xl font-bold"><span class="text-[#00BCFF]">Frequently</span> <span
+                        class="text-[#18181B]">Asked Questions</span></h1>
+            </div>
+            <div class="collapse collapse-plus bg-[#ECECEC] mb-5 border border-base-300">
+                <input type="radio" name="my-accordion-3" checked="checked" />
+                <div class="collapse-title font-semibold">1. What is the difference between var, let, and const?</div>
+                <div class="collapse-content text-sm text-gray-500 text-justify">In JavaScript, var, let, and const are
+                    used to declare variables, but they work differently. var is old and can be used nywhere inside a
+                    function, but it can cause problems because it gets hoisted (moved to the top) and allows
+                    redeclaring the same variable. let is better because it only works inside the block {} where it is
+                    declared and doesn't let you use it before it's assigned. const is like let, but once you set a
+                    value, you can’t change it. However, if it's an object or array, you can still modify its contents.
+                    It's best to use let for changing values and const for values that stay the same.</div>
+            </div>
+            <div class="collapse collapse-plus bg-[#ECECEC] mb-5 border border-base-300">
+                <input type="radio" name="my-accordion-3" />
+                <div class="collapse-title font-semibold">2. What is the difference between map(), forEach(), and
+                    filter()?</div>
+                <div class="collapse-content text-sm text-gray-500 text-justify">In JavaScript, map(), forEach(), and
+                    filter() are used to work with arrays, but they have different purposes. map() is
+                    used when you want to create a new array by modifying each element of the original array without
+                    changing it. It returns a new array with the transformed values. forEach() is different because it
+                    does not create a new array; instead, it just loops through each element and performs an action,
+                    like printing values or updating something, but it doesn’t return anything. filter() is useful when
+                    you only want certain elements from an array based on a condition. It checks each element and
+                    creates a new array with only the elements that meet the condition. So, map() is great for changing
+                    values, forEach() is good for running a function on each item without making a new array, and
+                    filter() helps in selecting specific values.</div>
+            </div>
+            <div class="collapse collapse-plus bg-[#ECECEC] mb-5 border border-base-300">
+                <input type="radio" name="my-accordion-3" />
+                <div class="collapse-title font-semibold">3. Explain arrow functions and how they are different from
+                    regular functions?</div>
+                <div class="collapse-content text-sm text-gray-500 text-justify">In JavaScript, arrow functions are a
+                    shorter way to write functions. They use => instead of the function keyword, making the code cleaner
+                    and easier to read. One big difference between arrow functions and regular functions is how they
+                    handle this. In regular functions, this changes depending on how the function is called, which can
+                    sometimes cause confusion. But in arrow functions, this always refers to the surrounding scope,
+                    meaning it doesn’t change. Another difference is that arrow functions cannot be used as
+                    constructors, so you can’t create objects with them using new. Also, they don’t have their own
+                    arguments object like regular functions do. Arrow functions are great for short and simple
+                    functions, but for complex functions that need this or arguments, regular functions are still
+                    useful.</div>
+            </div>
+            <div class="collapse collapse-plus bg-[#ECECEC] mb-5 border border-base-300">
+                <input type="radio" name="my-accordion-3" />
+                <div class="collapse-title font-semibold">4. How JavaScript Promises work?</div>
+                <div class="collapse-content text-sm text-gray-500 text-justify">In JavaScript, Promises are used to
+                    handle asynchronous operations, like fetching data from a server. A Promise represents a task that
+                    will complete in the future and can either resolve (success) or reject (failure). When a Promise is
+                    created, it starts running immediately and eventually returns a result. We use .then() to handle
+                    success and .catch() to handle errors. Promises help avoid callback hell, making the code cleaner
+                    and easier to read. They also support chaining, meaning we can run multiple asynchronous tasks one
+                    after another. If something goes wrong in any step, the .catch() method will catch the error.
+                    Promises are very useful when working with APIs, databases, or any task that takes time to complete.
+                </div>
+            </div>
+            <div class="collapse collapse-plus bg-[#ECECEC] mb-5 border border-base-300">
+                <input type="radio" name="my-accordion-3" />
+                <div class="collapse-title font-semibold">5. How closures work in JavaScript?</div>
+                <div class="collapse-content text-sm text-gray-500 text-justify">In JavaScript, a closure happens when a
+                    function remembers and can access variables from its outer function even after the outer function
+                    has finished running. This works because inner functions keep a reference to the variables of their
+                    parent function. Closures are useful for creating private variables, because the outer function’s
+                    variables cannot be accessed directly from outside. They also help in scenarios like data hiding,
+                    maintaining state, and creating functions with specific behaviors. Since closures keep variables
+                    alive in memory, they should be used carefully to avoid unnecessary memory usage. They are commonly
+                    used in event handlers, timers, and callbacks to maintain values over time.</div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer section here -->
+    <footer id="footer-section" class="h-50 p-10 lg:flex space-y-10 lg:space-y-0 justify-between items-end border-t-2 border-orange-100">
+        <aside class="space-y-3">
+            <div class="flex-1">
+                <a class="text-xl font-semibold">English<img class="inline" src="./assets/logo.png" alt=""> জানালা</a>
+            </div>
+            <p>
+                <span class="font-semibold">ইংরেজি শিখুন সহজে</span>
+                <br />
+                <span class="text-gray-500">Providing ED-Tech Applications since 2025</span>
+            </p>
+        </aside>
+        <nav class="items-end lg:pb-0 pb-5">
+            <h6 class="footer-title">Follow Us</h6>
+            <div class="grid grid-flow-col gap-4">
+                <a href="https://www.linkedin.com/in/md-hridoy-768844214/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BvZO%2B5CdFS5i6fz1iXXq2MQ%3D%3D" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        class="fill-current">
+                        <path
+                            d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z">
+                        </path>
+                    </svg>
+                </a>
+                <a href="https://www.facebook.com/share/12FG74HYwkf/" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        class="fill-current">
+                        <path
+                            d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z">
+                        </path>
+                    </svg>
+                </a>
+                <a href="https://www.facebook.com/share/12FG74HYwkf/" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        class="fill-current">
+                        <path
+                            d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z">
+                        </path>
+                    </svg>
+                </a>
+            </div>
+        </nav>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
