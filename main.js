@@ -4,8 +4,8 @@ const mainSection = document.getElementById("main-section");
 const footerSection = document.getElementById("footer-section");
 const heroSection = document.getElementById("hero-section");
 
-// headerSection.style.display = "none";
-// mainSection.style.display = "none";
+headerSection.style.display = "none";
+mainSection.style.display = "none";
 
 // login function here
 loginBtn.addEventListener("click", (event) => {
