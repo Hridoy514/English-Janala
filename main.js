@@ -107,7 +107,7 @@ const displayLessons = (lessons) => {
   // show error container here
   if (!lessons || lessons.length === 0) {
     lessonsContainer.innerHTML = `
-        <div id="show-error" class="h-72 w-full mx-5 lg:mx-0 bg-[#ECECEC] rounded-lg text-center">
+        <div id="show-error" class="h-72 w-full bg-[#ECECEC] rounded-lg text-center">
                 <div class="space-y-3">
                     <img class="mx-auto" src="./assets/alert-error.png" alt="">
                     <p class="text-xs text-gray-500">এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।</p>
